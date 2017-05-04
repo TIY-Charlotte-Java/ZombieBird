@@ -55,7 +55,6 @@ public class ScrollHandler {
 
         } else if (backGrass.isScrolledLeft()) {
             backGrass.reset(frontGrass.getTailX());
-
         }
     }
 
@@ -73,6 +72,8 @@ public class ScrollHandler {
 
 
     public boolean collides(Bird bird) {
+        // if bird passes through teh pipe
+        // play a coin noise and set the pipe's "scored" to true
         if (!pipe1.isScored()
                 && pipe1.getX() + (pipe1.getWidth() / 2) < bird.getX()
                 + bird.getWidth()) {
@@ -94,8 +95,7 @@ public class ScrollHandler {
             AssetLoader.coin.play();
         }
 
-        return (pipe1.collides(bird) || pipe2.collides(bird) || pipe3
-                .collides(bird));
+        return (pipe1.collides(bird) || pipe2.collides(bird) || pipe3.collides(bird));
     }
 
     // The getters for our five instance variables
